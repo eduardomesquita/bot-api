@@ -1,0 +1,8 @@
+version: '2'
+services:
+  postgis:
+    image: postgres:latest
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "32768:5432"  
