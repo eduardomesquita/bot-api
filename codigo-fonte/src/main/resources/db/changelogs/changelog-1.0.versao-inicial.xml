@@ -9,8 +9,12 @@
             <![CDATA[
 
             create table tb_bot (
-                id_bot bigint
+                id varchar(40) NOT NULL,
+                name varchar(100) NOT NULL,
+
+                constraint pk_bot primary key (id)
             );
+
 
             ]]>
         </sql>

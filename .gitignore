@@ -23,6 +23,7 @@
 hs_err_pid*
 
 /target/
+codigo-fonte/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
