@@ -15,6 +15,25 @@
                 constraint pk_bot primary key (id)
             );
 
+            ]]>
+        </sql>
+
+    </changeSet>
+
+    <changeSet id="1.1" author="eduardo.mesquita">
+        <sql>
+            <![CDATA[
+
+            create table tb_message (
+                id varchar(40) NOT NULL,
+                message_to varchar(40) NOT NULL,
+                message_from varchar(40) NOT NULL,
+                conversation_id varchar(40) NOT NULL,
+                created_at TIMESTAMP NOT NULL,
+                text  varchar(200) NOT NULL,
+
+                constraint pk_message primary key (id)
+            );
 
             ]]>
         </sql>

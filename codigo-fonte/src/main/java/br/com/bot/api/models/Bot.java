@@ -1,6 +1,6 @@
 package br.com.bot.api.models;
 
-import br.com.bot.api.utils.IdentifierUtil;
+import br.com.bot.api.utils.IdentifierUtils;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,22 +14,20 @@ import java.io.Serializable;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "tb_bot")
 @Entity
+@Table(name = "tb_bot")
 public class Bot implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, length = 40)
     private String id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
 
 
-
     public Bot(String name){
-        this.id = IdentifierUtil.generateRandomID();
-        System.out.println("asssssssssssssssssssssssssssssss");
+        this.id = IdentifierUtils.generateRandomID();
         this.name = name;
     }
 

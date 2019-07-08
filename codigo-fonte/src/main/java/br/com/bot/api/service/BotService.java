@@ -3,8 +3,11 @@ package br.com.bot.api.service;
 import br.com.bot.api.exceptions.BusinessException;
 import br.com.bot.api.models.Bot;
 import br.com.bot.api.repositories.BotRepository;
+import br.com.bot.api.utils.ConstantsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class BotService {
@@ -12,42 +15,30 @@ public class BotService {
     @Autowired
     private BotRepository repository;
 
-    private Bot findByID(String id) throws BusinessException {
-        Bot bot = findOne(id);
-        if(bot == null){
-            throw new BusinessException("Chave Invalida");
-        }
-        return bot;
-    }
+    @Autowired
+    private ValidateService validate;
 
-    private void validateName(String name) throws BusinessException {
-        Bot bot = repository.findByName(name);
-        if(bot != null){
-            throw new BusinessException("Bot ja cadastrado");
+    public Bot findById(String id) throws BusinessException {
+        Optional<Bot> bot = repository.findById(id);
+        if (bot.isPresent()) {
+            return bot.get();
         }
+        throw new BusinessException(ConstantsUtils.MSG_ERROR_INVALID_ID);
     }
 
     public Bot save(String name) throws BusinessException {
-        if(name == null || name.isEmpty()){
-            throw new BusinessException("Chave Invalida");
-        }
-        validateName(name);
-
+        validate.valdiateName(name);
         return repository.save(new Bot(name));
     }
 
-    public Bot findOne(String id) {
-        return repository.findOne(id);
-    }
-
     public void delete(String id) throws BusinessException {
-        Bot bot = findByID(id);
+        Bot bot = findById(id);
         repository.delete(bot);
     }
 
     public void update(String id, String name) throws BusinessException {
-        validateName(name);
-        Bot bot = findByID(id);
+        validate.valdiateName(name);
+        Bot bot = findById(id);
         bot.setName(name);
         repository.saveAndFlush(bot);
     }

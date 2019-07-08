@@ -14,20 +14,17 @@ import java.util.Date;
 public class Message implements Serializable {
 
     @Id
-    @SequenceGenerator(name="message_id_seq", sequenceName="message_id_seq", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="message_id_seq")
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", nullable = false, length = 40)
+    private String id;
 
-    @OneToOne
-    @JoinColumn(name = "id_bot")
-    private Bot bot;
+    @Column(name = "message_to", nullable = false, length = 40)
+    private String to;
 
-    @Column(name = "user_session_id", nullable = false, length = 40)
-    private String userSession;
+    @Column(name = "message_from", nullable = false, length = 40)
+    private String from;
 
     @Column(name = "conversation_id", nullable = false, length = 40)
-    private String conversationID;
+    private String conversationId;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false)
