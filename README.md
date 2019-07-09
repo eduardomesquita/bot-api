@@ -16,6 +16,20 @@ docker network create bot_api
 
 ## 2 - Run database PostgreSQL with Docker
 
+Change to postgres directory
+
+```bash
+cd docker/postgres
+```
+
+And run the compose
+
+```bash
+docker-compose up
+```
+
+## 3 - Run Spring-Boot App with Docker
+
 First, set your environment variables
 
 ```bash
@@ -24,20 +38,6 @@ export POSTGRES_PORT=32768
 export POSTGRES_USER=postgres
 export POSTGRES_DATABASE=postgres
 ```
-
-Change to database directory
-
-```bash
-cd docker/postgres
-```
-
-Run Compose
-
-```bash
-docker-compose up
-```
-
-## 3 - Run Spring-Boot App with Docker
 
 Change to maven directory
 
@@ -58,11 +58,12 @@ cp target/bot-api-0.0.1-SNAPSHOT.jar ../docker/spring/app.jar
 ```
 
 Change to docker app directory
+
 ```bash
 cd ../docker/spring
 ```
 
-Run docker compose 
+And run the compose
 ```bash
 docker-compose up --build
 ```
