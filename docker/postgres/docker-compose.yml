@@ -1,0 +1,11 @@
+version: '2'
+services:
+  db:
+    container_name: postgresDB
+    image: postgres:latest
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "32768:5432"
+    network_mode: "bot_api"
+  

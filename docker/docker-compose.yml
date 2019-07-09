@@ -1,8 +1,22 @@
 version: '2'
 services:
-  postgis:
+  db:
     image: postgres:latest
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-      - "32768:5432"  
+      - "32768:5432"
+  web:
+    build: spring/
+    ports:
+      - "8080:8080" 
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_DATABASE=postgres
+  network_mode: "bot_api"

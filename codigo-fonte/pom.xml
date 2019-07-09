@@ -178,8 +178,8 @@
                 <configuration>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <changeLogFile>src/main/resources/db/changelog-master.xml</changeLogFile>
-                    <url>jdbc:postgresql://localhost:32768/postgres</url>
-                    <username>postgres</username>
+                    <url>jdbc:postgresql://${env.POSTGRES_HOST}:${env.POSTGRES_PORT}/${env.POSTGRES_DATABASE}</url>
+                    <username>${POSTGRES_USER}</username>
                     <password></password>
                 </configuration>
                 <dependencies>

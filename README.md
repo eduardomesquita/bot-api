@@ -9,26 +9,62 @@ A simple sample [Spring Boot](http://projects.spring.io/spring-boot/) applicatio
 - Docker (>= 1.11.2)
 - Docker Compose (>= 1.8.0)
 
-
-## Build
+## Create Docker Network
 ```bash
-mvn clean package
+docker network create bot_api
 ```
 
-## Configure liquibase
-- Create schema 'public' in the database postgres
+## Run database PostgreSQL with Docker
+
+First, set your environment variables
+
 ```bash
-mvn liquibase:update
+export POSTGRES_HOST=localhost
+export POSTGRES_PORT=32768
+export POSTGRES_USER=postgres
+export POSTGRES_DATABASE=postgres
 ```
 
-## Run
+Change to database directory
+
 ```bash
-mvn spring-boot:run
+cd docker/postgres
 ```
 
-### OR
+Run Compose
+
 ```bash
-java -jar target/bot-api-0.0.1-SNAPSHOT.jar
+docker-compose up
+```
+
+## Run Spring-Boot App with Docker
+
+Change to maven directory
+
+```bash
+cd codigo-fonte
+```
+
+Build & Liquibase
+
+```bash
+mvn clean package liquibase:update
+```
+
+Copy jar
+
+```bash
+cp target/bot-api-0.0.1-SNAPSHOT.jar ../docker/spring/app.jar
+```
+
+Change to docker app directory
+```bash
+cd ../docker/spring
+```
+
+## Run docker compose 
+```bash
+docker-compose up --build
 ```
 
 ## Testing
