@@ -9,12 +9,12 @@ A simple sample [Spring Boot](http://projects.spring.io/spring-boot/) applicatio
 - Docker (>= 1.11.2)
 - Docker Compose (>= 1.8.0)
 
-## Create Docker Network
+## 1 - Create Docker Network
 ```bash
 docker network create bot_api
 ```
 
-## Run database PostgreSQL with Docker
+## 2 - Run database PostgreSQL with Docker
 
 First, set your environment variables
 
@@ -37,7 +37,7 @@ Run Compose
 docker-compose up
 ```
 
-## Run Spring-Boot App with Docker
+## 3 - Run Spring-Boot App with Docker
 
 Change to maven directory
 
@@ -62,12 +62,12 @@ Change to docker app directory
 cd ../docker/spring
 ```
 
-## Run docker compose 
+Run docker compose 
 ```bash
 docker-compose up --build
 ```
 
-## Testing
+## 4 - Testing
 
 #### Create a Bot
 
