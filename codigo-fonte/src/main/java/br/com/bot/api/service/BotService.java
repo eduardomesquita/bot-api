@@ -7,8 +7,6 @@ import br.com.bot.api.utils.ConstantsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class BotService {
 
@@ -19,9 +17,9 @@ public class BotService {
     private ValidateService validate;
 
     public Bot findById(String id) throws BusinessException {
-        Optional<Bot> bot = repository.findById(id);
-        if (bot.isPresent()) {
-            return bot.get();
+        Bot bot = repository.findOne(id);
+        if (bot != null) {
+            return bot;
         }
         throw new BusinessException(ConstantsUtils.MSG_ERROR_INVALID_ID);
     }

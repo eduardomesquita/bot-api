@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MessageService {
@@ -37,9 +36,9 @@ public class MessageService {
     }
 
     public Message findById(String id) throws BusinessException {
-        Optional<Message> message = repository.findById(id);
-        if (message.isPresent()) {
-            return message.get();
+        Message message = repository.findOne(id);
+        if (message != null) {
+            return message;
         }
         throw new BusinessException(ConstantsUtils.MSG_ERROR_INVALID_ID_MESSAGE);
     }
