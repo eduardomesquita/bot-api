@@ -32,7 +32,8 @@ java -jar target/bot-api-0.0.1-SNAPSHOT.jar
 ```
 
 ## Testing
-Create a Bot
+
+#### Create a Bot
 
 ```bash
 curl -X POST http://localhost:8080/bots -H 'content-type: application/json' -d '{"name": "Bot 1"}'
@@ -54,7 +55,7 @@ Output:
 }
 ```
 
-Search a Bot
+#### Search a Bot
 
 ```bash
 curl -X GET  http://localhost:8080/bots/0659db0b-8568-4f4e-abf7-c845eed53942
@@ -75,7 +76,7 @@ Output:
 }
 ```
 
-Replace a Bot Name
+#### Replace a Bot Name
 
 ```bash
 curl -X PUT http://localhost:8080/bots/0659db0b-8568-4f4e-abf7-c845eed53942 -H 'content-type: application/json' -d '{"name": "Bot 2"}'
@@ -87,7 +88,7 @@ Response code:
 HTTP status 200 OK
 ```
 
-Delete a Bot
+#### Delete a Bot
 
 ```bash
 curl -X DELETE http://localhost:8080/bots/0659db0b-8568-4f4e-abf7-c845eed53942 -H 'content-type: application/json'
@@ -99,7 +100,7 @@ Response code:
 HTTP status 200 OK
 ```
 
-Create a Message
+#### Create a Message
 
 ```bash
 curl -X POST http://localhost:8080/messages -H 'content-type: application/json' -d '{"conversationId": "7665ada8-3448-4acd-a1b7-d688e68fe9a1", "timestamp": "2018-11-16T23:30:52.6917722Z", "from": "36b9f842-ee97-11e8-9443-0242ac120002", "to": "16edd3b3-3f75-40df-af07-2a3813a79ce9", "text": "Oi! Como posso te ajudar?" }'
@@ -124,7 +125,7 @@ Output:
 }
 ```
 
-Search a Message
+#### Search a Message
 
 ```bash
 curl -X GET http://localhost:8080/messages/a5d9f749-84e0-4389-a40f-e4c1f55a2ea4
@@ -149,7 +150,7 @@ Output:
 }
 ```
 
-Search a Conversation
+#### Search a Conversation
 
 ```bash
 curl -X GET http://localhost:8080/messages?conversationId=7665ada8-3448-4acd-a1b7-d688e68fe9a1
